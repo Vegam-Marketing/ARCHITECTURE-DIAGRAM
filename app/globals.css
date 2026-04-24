@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html,
+  body {
+    background: #000;
+  }
+
+  input,
+  textarea {
+    caret-color: #d97642;
+  }
+}
+
+/* =====================================================================
+   AI Intime Architect — aesthetic layer
+   Engineering blueprint / dark mode / amber accent
+   ===================================================================== */
+
+/* Blueprint grid — tuned for jet black */
+.blueprint-grid {
+  background-image:
+    linear-gradient(rgba(217, 118, 66, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(217, 118, 66, 0.018) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Fine noise for depth */
+.grain {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(255, 255, 255, 0.012) 1px,
+    transparent 0
+  );
+  background-size: 3px 3px;
+}
+
+/* Radial amber wash from top-center */
+.vignette {
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(217, 118, 66, 0.06) 0%,
+    rgba(0, 0, 0, 0) 55%
+  );
+}
+
+/* Corner-bracket frame on selected/active elements */
+.bracket-frame {
+  position: relative;
+}
+.bracket-frame::before,
+.bracket-frame::after,
+.bracket-frame > .br-tr,
+.bracket-frame > .br-bl {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: #d97642;
+  border-style: solid;
+  pointer-events: none;
+}
+.bracket-frame::before {
+  top: -1px;
+  left: -1px;
+  border-width: 1px 0 0 1px;
+}
+.bracket-frame::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 1px 1px 0;
+}
+.bracket-frame > .br-tr {
+  top: -1px;
+  right: -1px;
+  border-width: 1px 1px 0 0;
+}
+.bracket-frame > .br-bl {
+  bottom: -1px;
+  left: -1px;
+  border-width: 0 0 1px 1px;
+}
+
+/* Reveal animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  animation: fadeUp 0.5s ease-out both;
+}
+
+@keyframes nodeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.node-in {
+  animation: nodeIn 0.4s ease-out both;
+}
+
+@keyframes pulseAmber {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(217, 118, 66, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(217, 118, 66, 0.15);
+  }
+}
+.pulse-amber {
+  animation: pulseAmber 2.4s ease-in-out infinite;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+.edge-animate {
+  animation: dash 1.2s linear infinite;
+}
+
+/* Scrollbar — quiet on pure black */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: #1c1c1c;
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2c2c2c;
+}

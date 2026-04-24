@@ -1,0 +1,28 @@
+{
+  "name": "ai-intime-architect",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Self-serve tool that generates a custom AI agent blueprint and sovereign reference architecture for enterprise manufacturers.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "next": "^14.2.15",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^14.2.15",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  }
+}
