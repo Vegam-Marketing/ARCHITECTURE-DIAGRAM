@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Intime Architect — Build your sovereign AI blueprint</title>
+  <meta name="description" content="In 3 minutes, get a custom AI agent architecture mapped to your stack. Built by AI Intime / Vegam." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       AI INTIME ARCHITECT — Single-page lead magnet
+       Jet black base · amber accent · IBM Plex typography
+       ============================================================ */
+
+    :root {
+      --bg: #000;
+      --panel: #0a0a0a;
+      --panel-2: #111;
+      --border: #1f1f1f;
+      --border-soft: #151515;
+      --text: #e7e5e4;
+      --muted: #a8a29e;
+      --dim: #78716c;
+      --faint: #44403c;
+      --accent: #d97642;
+      --accent-hover: #c0652f;
+      --accent-soft: rgba(217, 118, 66, 0.12);
+      --accent-border: rgba(217, 118, 66, 0.4);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: var(--bg); color: var(--text); font-family: 'IBM Plex Sans', system-ui, sans-serif; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+    body { caret-color: var(--accent); }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+    .display { font-family: 'IBM Plex Serif', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; }
+    .mono { font-family: 'IBM Plex Mono', Menlo, monospace; letter-spacing: -0.01em; }
+    .upper { text-transform: uppercase; letter-spacing: 0.15em; }
+
+    /* Top assurance bar */
+    .assurance {
+      background: #000;
+      border-bottom: 1px solid var(--border-soft);
+      padding: 8px 24px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--dim);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .assurance .dot { width: 6px; height: 6px; background: var(--accent); display: inline-block; margin-right: 8px; vertical-align: middle; }
+    .assurance .right { color: var(--faint); }
+
+    /* Top header */
+    header.top {
+      border-bottom: 1px solid var(--border-soft);
+      padding: 16px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: #000;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark { width: 24px; height: 24px; border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; }
+    .brand-mark-inner { width: 10px; height: 10px; background: var(--accent); }
+    .brand-name { font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.1em; }
+    .brand-sub {
+      font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase;
+      letter-spacing: 0.18em; color: var(--dim); padding-left: 14px; margin-left: 6px; border-left: 1px solid var(--border);
+    }
+    .top-cta { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--muted); transition: color 0.15s; }
+    .top-cta:hover { color: var(--accent); }
+
+    /* Hero */
+    .hero { padding: 40px 24px 16px; max-width: 1400px; margin: 0 auto; }
+    .hero .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+      text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent);
+      border: 1px solid var(--accent-border); padding: 6px 12px;
+      margin-bottom: 16px;
+    }
+    .hero .eyebrow .pulse { width: 6px; height: 6px; background: var(--accent); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    .hero h1 { font-family: 'IBM Plex Serif', serif; font-weight: 400; font-size: 42px; line-height: 1.05; color: var(--text); margin-bottom: 10px; max-width: 760px; }
+    .hero h1 .accent { color: var(--accent); }
+    .hero p { font-size: 15px; color: var(--muted); line-height: 1.55; max-width: 640px; }
+
+    /* Main layout — split */
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+      gap: 28px;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 28px 24px 80px;
+    }
+
+    /* Form side */
+    .form-panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 28px;
+      position: relative;
+    }
+    .form-panel::before,
+    .form-panel::after {
+      content: ''; position: absolute; width: 10px; height: 10px; border-color: var(--accent); border-style: solid; pointer-events: none;
+    }
+    .form-panel::before { top: -1px; left: -1px; border-width: 1px 0 0 1px; }
+    .form-panel::after { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
+
+    .form-title {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .form-desc {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: 22px;
+      color: var(--text);
+      margin-bottom: 4px;
+      line-height: 1.25;
+    }
+    .form-sub { font-size: 13px; color: var(--muted); margin-bottom: 26px; }
+
+    .field { margin-bottom: 22px; }
+    .field-label {
+      display: block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .field-label .count {
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--dim);
+      text-transform: none;
+      letter-spacing: 0;
+      float: right;
+      font-size: 10px;
+    }
+    .field-label .count.ok { color: var(--muted); }
+    .field-label .count.err { color: #ef4444; }
+
+    input[type="text"], input[type="email"], select, textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 15px;
+      padding: 10px 2px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focus { border-bottom-color: var(--accent); }
+    input::placeholder, textarea::placeholder { color: var(--faint); }
+
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%23a8a29e' d='M6 8L0 0h12z'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 4px center;
+      padding-right: 24px;
+      cursor: pointer;
+    }
+    select option { background: #0a0a0a; color: var(--text); }
+
+    textarea { resize: vertical; min-height: 88px; font-family: 'IBM Plex Sans', sans-serif; line-height: 1.5; }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    /* Stack multi-select chips */
+    .chips-wrap { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .chip {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: transparent;
+      transition: all 0.15s;
+      user-select: none;
+    }
+    .chip:hover { border-color: var(--faint); color: var(--text); }
+    .chip.active {
+      border-color: var(--accent);
+      color: var(--text);
+      background: var(--accent-soft);
+    }
+
+    /* Inline email row */
+    .email-row {
+      margin-top: 28px; padding-top: 22px;
+      border-top: 1px solid var(--border);
+    }
+    .email-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: end;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 13px 20px;
+      display: flex; align-items: center; gap: 10px;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+    .btn-primary:hover:not(:disabled) { background: var(--accent-hover); }
+    .btn-primary:disabled { background: #1f1f1f; color: var(--dim); cursor: not-allowed; }
+    .btn-primary .arrow { transition: transform 0.2s; }
+    .btn-primary:hover:not(:disabled) .arrow { transform: translateX(3px); }
+    .assurance-inline {
+      margin-top: 10px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--dim);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .err-msg {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: #ef4444;
+      margin-top: 8px;
+      display: none;
+    }
+
+    /* Right side — preview */
+    .preview-panel {
+      position: sticky;
+      top: 24px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 24px;
+      min-height: 640px;
+      display: flex; flex-direction: column;
+      position: relative;
+      background-image:
+        linear-gradient(rgba(217, 118, 66, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(217, 118, 66, 0.015) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .preview-panel::before,
+    .preview-panel::after {
+      content: ''; position: absolute; width: 10px; height: 10px; border-color: var(--accent); border-style: solid; pointer-events: none;
+    }
+    .preview-panel::before { top: -1px; left: -1px; border-width: 1px 0 0 1px; }
+    .preview-panel::after { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
+
+    .preview-head {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 16px;
+    }
+    .preview-head .label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+    }
+    .preview-head .live {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .live-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 1.5s infinite; }
+
+    .layer { margin-bottom: 10px; animation: fadeUp 0.4s ease-out; }
+    .layer-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+    .layer-tag { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--dim); }
+    .layer-name { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text); }
+    .layer-line { flex: 1; height: 1px; background: var(--border-soft); }
+
+    .nodes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 6px;
+    }
+    .node {
+      background: #0d0d0d;
+      border: 1px solid var(--border);
+      padding: 8px 10px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      transition: all 0.2s;
+      animation: nodeIn 0.3s ease-out;
+    }
+    .node .name { color: var(--text); font-weight: 500; margin-bottom: 2px; font-size: 11px; }
+    .node .sub { color: var(--dim); font-size: 9.5px; }
+    .node .fn {
+      display: block;
+      font-size: 9.5px;
+      color: var(--dim);
+      margin-top: 1px;
+    }
+    .node .fn::before { content: '› '; color: var(--faint); }
+    .node.highlight {
+      border-color: var(--accent-border);
+      background: linear-gradient(to bottom right, rgba(217, 118, 66, 0.08), transparent);
+    }
+    .node.highlight .name { color: var(--accent); }
+    .node.custom {
+      border-style: dashed;
+      border-color: var(--accent-border);
+    }
+    .node.empty {
+      border-style: dashed;
+      background: transparent;
+    }
+    .node.empty .name { color: var(--faint); }
+    .node.empty .sub { color: var(--faint); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes nodeIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+
+    .preview-empty {
+      flex: 1;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--dim);
+    }
+    .preview-empty .icon {
+      width: 40px; height: 40px; border: 1px dashed var(--faint); margin-bottom: 16px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--faint);
+    }
+    .preview-empty .title { font-family: 'IBM Plex Serif', serif; font-size: 18px; color: var(--muted); margin-bottom: 6px; }
+    .preview-empty .desc { font-size: 13px; max-width: 280px; line-height: 1.5; }
+
+    .preview-foot {
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-soft);
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--dim);
+    }
+    .legend { display: flex; gap: 14px; }
+    .legend-item { display: flex; align-items: center; gap: 6px; }
+    .legend-dot { width: 8px; height: 8px; }
+    .legend-dot.selected { background: var(--accent); }
+    .legend-dot.core { background: var(--faint); }
+    .legend-dot.custom { border: 1px dashed var(--accent); width: 7px; height: 7px; }
+
+    /* Download state after submit */
+    .downloads {
+      margin-top: 14px;
+      padding: 14px;
+      background: linear-gradient(135deg, rgba(217, 118, 66, 0.08), transparent);
+      border: 1px solid var(--accent-border);
+      display: none;
+    }
+    .downloads.show { display: block; animation: fadeUp 0.5s ease-out; }
+    .downloads .head {
+      font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase;
+      letter-spacing: 0.18em; color: var(--accent); margin-bottom: 6px;
+    }
+    .downloads .title { font-family: 'IBM Plex Serif', serif; font-size: 17px; color: var(--text); margin-bottom: 10px; }
+    .downloads .actions { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+    .dl-btn {
+      border: 1px solid var(--border);
+      padding: 9px 12px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text);
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: all 0.15s;
+    }
+    .dl-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .dl-btn .ic { width: 12px; height: 12px; }
+    .dl-book {
+      display: block;
+      background: var(--accent);
+      color: #000;
+      padding: 11px 14px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      text-align: center;
+      transition: background 0.15s;
+    }
+    .dl-book:hover { background: var(--accent-hover); }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-soft);
+      padding: 22px 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase;
+      letter-spacing: 0.15em; color: var(--faint);
+      flex-wrap: wrap; gap: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .split { grid-template-columns: 1fr; padding: 20px; }
+      .preview-panel { position: static; min-height: 480px; }
+      .hero h1 { font-size: 34px; }
+      .field-row { grid-template-columns: 1fr; gap: 20px; }
+      .email-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .assurance { flex-direction: column; gap: 4px; font-size: 10px; padding: 8px 16px; }
+      .assurance .right { display: none; }
+      header.top { padding: 14px 16px; }
+      .brand-sub { display: none; }
+      .hero { padding: 28px 16px 12px; }
+      .hero h1 { font-size: 28px; }
+      .form-panel, .preview-panel { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Assurance bar -->
+  <div class="assurance">
+    <div><span class="dot"></span>Your inputs stay inside our environment · Zero telemetry · No model training</div>
+    <div class="right">AI Intime / Architect · v0.1</div>
+  </div>
+
+  <!-- Header -->
+  <header class="top">
+    <div class="brand">
+      <div class="brand-mark"><div class="brand-mark-inner"></div></div>
+      <div class="brand-name">AI INTIME</div>
+      <div class="brand-sub">Sovereign AI Platform</div>
+    </div>
+    <a href="mailto:info@aiintime.com" class="top-cta">Book a strategy session</a>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="eyebrow"><span class="pulse"></span>AI Intime Architect</div>
+    <h1>Don&apos;t just pilot AI. <span class="accent">Operationalize it.</span></h1>
+    <p>Tell us about your stack and your pain. Watch your sovereign AI architecture build itself — then download the blueprint and brief.</p>
+  </section>
+
+  <!-- Split layout -->
+  <div class="split">
+
+    <!-- FORM SIDE -->
+    <div class="form-panel">
+      <div class="form-title">Your inputs</div>
+      <div class="form-desc">Six fields. Three minutes.</div>
+      <div class="form-sub">The preview on the right updates as you type.</div>
+
+      <!-- Company name -->
+      <div class="field">
+        <label class="field-label" for="f-company">Company name</label>
+        <input type="text" id="f-company" placeholder="e.g. Acme Coatings" />
+      </div>
+
+      <!-- Industry + Role (row) -->
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label" for="f-industry">Industry</label>
+          <select id="f-industry">
+            <option value="">Select industry</option>
+            <option>Chemicals / Coatings / Materials</option>
+            <option>Automotive &amp; Supplier</option>
+            <option>Pharma / Life Sciences</option>
+            <option>Discrete / Industrial</option>
+            <option>Banking &amp; Financial Services</option>
+            <option>R&amp;D / Defence / Government</option>
+            <option>Healthcare</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field-label" for="f-role">Your role</label>
+          <select id="f-role">
+            <option value="">Select role</option>
+            <option>CIO / CTO</option>
+            <option>Head of Digital</option>
+            <option>Plant / Ops</option>
+            <option>Quality / Compliance</option>
+            <option>Innovation / R&amp;D</option>
+            <option>Data / AI Lead</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Pain point -->
+      <div class="field">
+        <label class="field-label" for="f-pain">
+          Your pain point
+          <span class="count" id="pain-count">0 / 600</span>
+        </label>
+        <textarea id="f-pain" maxlength="600" rows="4" placeholder="E.g. 'Regulatory submissions take 30+ hours per batch, pulling data from PDFs across 4 labs in 3 languages. Deadlines slip constantly.'"></textarea>
+      </div>
+
+      <!-- Stack (chips) -->
+      <div class="field">
+        <label class="field-label">
+          Your stack <span class="count" id="stack-count">0 selected</span>
+        </label>
+        <div class="chips-wrap" id="stack-chips">
+          <!-- Chips injected by JS -->
+        </div>
+      </div>
+
+      <!-- Compliance -->
+      <div class="field">
+        <label class="field-label">
+          Compliance posture <span class="count" id="comp-count">0 selected</span>
+        </label>
+        <div class="chips-wrap" id="comp-chips">
+          <!-- Chips injected by JS -->
+        </div>
+      </div>
+
+      <!-- Inline email row -->
+      <div class="email-row">
+        <div class="field-label">Work email <span class="count" id="email-hint">required to generate</span></div>
+        <div class="email-grid">
+          <input type="email" id="f-email" placeholder="you@company.com" autocomplete="email" />
+          <button class="btn-primary" id="btn-generate" disabled>
+            Generate blueprint
+            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+        <div class="err-msg" id="err-msg">Please use a valid work email address.</div>
+        <div class="assurance-inline">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#d97642" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Stays inside our environment · no marketing list · no third-party sharing
+        </div>
+      </div>
+    </div>
+
+    <!-- PREVIEW SIDE -->
+    <div class="preview-panel">
+      <div class="preview-head">
+        <div class="label">Your architecture · Live</div>
+        <div class="live"><span class="live-dot"></span>Updating</div>
+      </div>
+
+      <!-- Empty state -->
+      <div class="preview-empty" id="preview-empty">
+        <div class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="0"/><path d="M3 9h18M9 3v18"/></svg>
+        </div>
+        <div class="title">Start filling the form</div>
+        <div class="desc">Your sovereign AI architecture will build here as you type. One node per system, one layer per framework tier.</div>
+      </div>
+
+      <!-- Architecture canvas -->
+      <div id="arch" style="display:none;"></div>
+
+      <!-- Download panel (shown after email submit) -->
+      <div class="downloads" id="downloads">
+        <div class="head">Your blueprint is ready</div>
+        <div class="title" id="dl-title">Blueprint generated.</div>
+        <div class="actions">
+          <a href="#" class="dl-btn" id="dl-arch" download>
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Architecture PNG
+          </a>
+          <a href="#" class="dl-btn" id="dl-brief" download>
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Executive brief
+          </a>
+        </div>
+        <a href="mailto:info@aiintime.com?subject=AI%20Intime%20Architect%20-%20Strategy%20session" class="dl-book">
+          Book 30 min with a solution architect →
+        </a>
+      </div>
+
+      <div class="preview-foot">
+        <div class="legend">
+          <span class="legend-item"><span class="legend-dot selected"></span>Your selections</span>
+          <span class="legend-item"><span class="legend-dot core"></span>Core framework</span>
+          <span class="legend-item"><span class="legend-dot custom"></span>Custom MCP</span>
+        </div>
+        <div>5-layer framework</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div>© AI Intime · Vegam Solutions Inc.</div>
+    <div>USA · Dubai · India · Singapore · info@aiintime.com</div>
+  </footer>
+
+  <script>
+    // =========================================================================
+    // Data
+    // =========================================================================
+    const STACK_OPTIONS = [
+      'SAP', 'Oracle', 'MS Dynamics',
+      'Vegam SFS', 'Rockwell', 'Siemens Opcenter', 'AVEVA Wonderware',
+      'LabWare', 'STARLIMS', 'LabVantage',
+      'ETQ', 'MasterControl', 'TrackWise',
+      'IBM Maximo', 'Infor EAM',
+      'SharePoint', 'Documentum', 'Confluence',
+      'Outlook', 'Gmail', 'Teams', 'Slack',
+      'Salesforce', 'HubSpot',
+      'Snowflake', 'Databricks', 'On-prem data lake',
+      'On-prem / Air-gapped', 'Private cloud', 'Hybrid',
+      'Copilot', 'Internal GPT', 'None'
+    ];
+    const COMPLIANCE_OPTIONS = [
+      'GDPR', 'HIPAA', 'FDA 21 CFR Part 11', 'GxP',
+      'SOC 2', 'ISO 17025', 'Data residency', 'ITAR'
+    ];
+
+    const FN_MAP = {
+      'SAP': ['get_customer_master', 'check_inventory', 'post_goods_issue'],
+      'Oracle': ['fetch_records', 'query_table'],
+      'MS Dynamics': ['get_orders', 'update_customer'],
+      'Vegam SFS': ['oee_reports', 'quality_qc', 'rm_report'],
+      'Rockwell': ['read_tags', 'production_status'],
+      'Siemens Opcenter': ['batch_data', 'recipe_lookup'],
+      'AVEVA Wonderware': ['historian_query', 'alarm_log'],
+      'LabWare': ['get_test_results', 'fetch_sample'],
+      'STARLIMS': ['sample_lookup', 'test_status'],
+      'LabVantage': ['assay_result', 'batch_query'],
+      'ETQ': ['capa_status', 'audit_log'],
+      'MasterControl': ['document_query', 'approval_status'],
+      'TrackWise': ['deviation_log', 'investigation_status'],
+      'IBM Maximo': ['work_order_status', 'asset_lookup'],
+      'Infor EAM': ['pm_schedule', 'asset_history'],
+      'SharePoint': ['search_docs', 'fetch_file'],
+      'Documentum': ['doc_retrieve', 'metadata_query'],
+      'Confluence': ['wiki_search', 'page_fetch'],
+      'Outlook': ['parse_email', 'send_response'],
+      'Gmail': ['read_thread', 'compose_reply'],
+      'Teams': ['channel_post', 'meeting_notes'],
+      'Slack': ['channel_fetch', 'thread_post'],
+      'Salesforce': ['get_account', 'log_case'],
+      'HubSpot': ['contact_lookup', 'deal_update'],
+      'Snowflake': ['query_warehouse', 'view_lookup'],
+      'Databricks': ['notebook_run', 'table_query'],
+      'On-prem data lake': ['file_fetch', 'partition_scan']
+    };
+
+    // Classify stack options by layer for architecture grouping
+    const STACK_LAYER_MAP = {
+      integration: ['SAP', 'Oracle', 'MS Dynamics', 'Vegam SFS', 'Rockwell', 'Siemens Opcenter', 'AVEVA Wonderware',
+                    'LabWare', 'STARLIMS', 'LabVantage', 'ETQ', 'MasterControl', 'TrackWise', 'IBM Maximo', 'Infor EAM',
+                    'SharePoint', 'Documentum', 'Confluence', 'Outlook', 'Gmail', 'Teams', 'Slack', 'Salesforce', 'HubSpot'],
+      data: ['Snowflake', 'Databricks', 'On-prem data lake']
+    };
+
+    // =========================================================================
+    // State
+    // =========================================================================
+    const state = {
+      company: '',
+      industry: '',
+      role: '',
+      pain: '',
+      stack: new Set(),
+      compliance: new Set(),
+      email: '',
+      submitted: false
+    };
+
+    // =========================================================================
+    // Chip rendering
+    // =========================================================================
+    function renderChips(containerId, options, stateSet, countElId, singular) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = '';
+      options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'chip' + (stateSet.has(opt) ? ' active' : '');
+        btn.textContent = opt;
+        btn.type = 'button';
+        btn.addEventListener('click', () => {
+          if (stateSet.has(opt)) stateSet.delete(opt);
+          else stateSet.add(opt);
+          renderChips(containerId, options, stateSet, countElId, singular);
+          updatePreview();
+          updateGenerateBtn();
+        });
+        container.appendChild(btn);
+      });
+      document.getElementById(countElId).textContent =
+        stateSet.size + ' ' + (stateSet.size === 1 ? singular : singular + 's');
+      document.getElementById(countElId).classList.toggle('ok', stateSet.size > 0);
+    }
+
+    renderChips('stack-chips', STACK_OPTIONS, state.stack, 'stack-count', 'selected');
+    renderChips('comp-chips', COMPLIANCE_OPTIONS, state.compliance, 'comp-count', 'selected');
+
+    // =========================================================================
+    // Form input wiring
+    // =========================================================================
+    document.getElementById('f-company').addEventListener('input', e => {
+      state.company = e.target.value.trim();
+      updatePreview();
+      updateGenerateBtn();
+    });
+    document.getElementById('f-industry').addEventListener('change', e => {
+      state.industry = e.target.value;
+      updatePreview();
+      updateGenerateBtn();
+    });
+    document.getElementById('f-role').addEventListener('change', e => {
+      state.role = e.target.value;
+      updateGenerateBtn();
+    });
+    document.getElementById('f-pain').addEventListener('input', e => {
+      state.pain = e.target.value;
+      document.getElementById('pain-count').textContent = e.target.value.length + ' / 600';
+      document.getElementById('pain-count').classList.toggle('ok', e.target.value.length >= 30);
+      updatePreview();
+      updateGenerateBtn();
+    });
+    document.getElementById('f-email').addEventListener('input', e => {
+      state.email = e.target.value.trim();
+      document.getElementById('err-msg').style.display = 'none';
+      updateGenerateBtn();
+    });
+
+    // =========================================================================
+    // Preview logic — build the architecture from current state
+    // =========================================================================
+    function updatePreview() {
+      const empty = document.getElementById('preview-empty');
+      const arch = document.getElementById('arch');
+
+      const hasAnyInput =
+        state.company || state.industry ||
+        state.pain.length >= 10 ||
+        state.stack.size > 0 ||
+        state.compliance.size > 0;
+
+      if (!hasAnyInput) {
+        empty.style.display = 'flex';
+        arch.style.display = 'none';
+        return;
+      }
+
+      empty.style.display = 'none';
+      arch.style.display = 'block';
+
+      // Build layers
+      const layers = [];
+
+      // L1 — Human Interfaces
+      layers.push({
+        tag: 'L1',
+        name: 'Human Interfaces',
+        nodes: [
+          { name: 'Web Chat', sub: 'REST + WebSocket' },
+          { name: 'Voice Input', sub: 'Optional wearable' },
+          { name: 'Streams', sub: 'Kafka · IoT' }
+        ]
+      });
+
+      // L2 — Data Sources
+      const dataNodes = [];
+      state.stack.forEach(s => {
+        if (STACK_LAYER_MAP.data.includes(s)) {
+          dataNodes.push({ name: s, sub: 'Data platform', highlight: true });
+        }
+      });
+      if (dataNodes.length === 0) {
+        dataNodes.push({ name: 'Enterprise Data', sub: 'Add data platform', empty: true });
+      }
+      layers.push({ tag: 'L2', name: 'Data Sources & Streams', nodes: dataNodes });
+
+      // L3 — Orchestration (agent nodes based on pain)
+      const orchNodes = [
+        { name: 'Intent Recognition', sub: 'LLM-based' },
+        { name: 'Planning & Reasoning', sub: 'ReAct · CoT' },
+        { name: 'Execution', sub: 'Validation' }
+      ];
+      if (state.pain.length >= 30) {
+        orchNodes.push({ name: 'Custom Agent', sub: 'From your pain', highlight: true });
+      }
+      layers.push({ tag: 'L3', name: 'AI Agent Orchestration', nodes: orchNodes });
+
+      // L4 — Framework Services
+      const fwNodes = [
+        { name: 'RAG · Vector DB', sub: 'Knowledge retrieval' },
+        { name: 'Foundation Models', sub: 'LLMs · SLMs' },
+        { name: 'Safety', sub: 'Guardrails' }
+      ];
+      if (state.compliance.size > 0) {
+        const comps = Array.from(state.compliance);
+        fwNodes.push({
+          name: 'Governance',
+          sub: comps.slice(0, 2).join(' · ') + (comps.length > 2 ? ` +${comps.length - 2}` : ''),
+          highlight: true
+        });
+      } else {
+        fwNodes.push({ name: 'Governance', sub: 'Audit · RBAC' });
+      }
+      layers.push({ tag: 'L4', name: 'Framework Services', nodes: fwNodes });
+
+      // L5 — MCP Integration Layer
+      const mcpNodes = [];
+      state.stack.forEach(s => {
+        if (STACK_LAYER_MAP.integration.includes(s)) {
+          const funcs = FN_MAP[s] || ['query', 'read', 'action'];
+          mcpNodes.push({ name: s + ' MCP', funcs: funcs, mcp: true, highlight: true });
+        }
+      });
+      if (mcpNodes.length === 0) {
+        mcpNodes.push({ name: 'Your Systems MCP', funcs: ['select stack items →'], mcp: true, empty: true });
+      }
+      layers.push({ tag: 'L5', name: 'MCP Integration Layer', nodes: mcpNodes });
+
+      // Render
+      arch.innerHTML = layers.map(layer => `
+        <div class="layer">
+          <div class="layer-head">
+            <span class="layer-tag">${layer.tag}</span>
+            <span class="layer-name">${layer.name}</span>
+            <span class="layer-line"></span>
+          </div>
+          <div class="nodes">
+            ${layer.nodes.map(n => `
+              <div class="node${n.highlight ? ' highlight' : ''}${n.custom ? ' custom' : ''}${n.empty ? ' empty' : ''}">
+                <div class="name">${n.name}</div>
+                ${n.mcp ? n.funcs.map(f => `<span class="fn">${f}</span>`).join('') : `<div class="sub">${n.sub}</div>`}
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // =========================================================================
+    // Generate button gating + submit
+    // =========================================================================
+    function isValidEmail(email) {
+      const blocked = ['gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com', 'icloud.com'];
+      const m = /^([^\s@]+)@([^\s@]+\.[^\s@]+)$/.exec(email.toLowerCase());
+      if (!m) return false;
+      if (blocked.includes(m[2])) return 'personal';
+      return true;
+    }
+
+    function updateGenerateBtn() {
+      const btn = document.getElementById('btn-generate');
+      const ready =
+        state.company.length > 0 &&
+        state.industry &&
+        state.role &&
+        state.pain.length >= 30 &&
+        state.stack.size > 0 &&
+        state.email.length > 4;
+      btn.disabled = !ready;
+
+      // Email hint text
+      const hint = document.getElementById('email-hint');
+      if (state.email.length === 0) {
+        hint.textContent = 'required to generate';
+      } else {
+        const valid = isValidEmail(state.email);
+        if (valid === true) hint.textContent = '✓ valid';
+        else if (valid === 'personal') hint.textContent = 'work email only';
+        else hint.textContent = 'invalid';
+      }
+    }
+
+    document.getElementById('btn-generate').addEventListener('click', () => {
+      const valid = isValidEmail(state.email);
+      const err = document.getElementById('err-msg');
+
+      if (valid !== true) {
+        err.style.display = 'block';
+        err.textContent = valid === 'personal'
+          ? 'Please use your work email (no gmail, yahoo, outlook.com).'
+          : 'Please enter a valid email address.';
+        return;
+      }
+
+      state.submitted = true;
+
+      // In production this would POST to backend for real PDF/PNG generation.
+      // For prototype: generate stub download blobs so the UX flow is complete.
+      const archBlob = new Blob([buildArchitectureTextExport()], { type: 'text/plain' });
+      const briefBlob = new Blob([buildBriefTextExport()], { type: 'text/plain' });
+
+      const archUrl = URL.createObjectURL(archBlob);
+      const briefUrl = URL.createObjectURL(briefBlob);
+
+      const company = (state.company || 'blueprint').toLowerCase().replace(/\s+/g, '-');
+      document.getElementById('dl-arch').href = archUrl;
+      document.getElementById('dl-arch').setAttribute('download', `${company}-architecture.txt`);
+      document.getElementById('dl-brief').href = briefUrl;
+      document.getElementById('dl-brief').setAttribute('download', `${company}-executive-brief.txt`);
+      document.getElementById('dl-title').textContent = `${state.company || 'Your organization'} — sovereign AI blueprint`;
+
+      // Show downloads panel
+      document.getElementById('downloads').classList.add('show');
+
+      // Scroll preview into view on mobile
+      if (window.innerWidth < 960) {
+        document.querySelector('.preview-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      // Track — replace with real analytics in production
+      console.log('[AI Intime Architect] Submission:', {
+        ...state,
+        stack: Array.from(state.stack),
+        compliance: Array.from(state.compliance)
+      });
+    });
+
+    // Stub exports — replace with real backend output
+    function buildArchitectureTextExport() {
+      return [
+        '================================================',
+        'AI INTIME — SOVEREIGN AI ARCHITECTURE',
+        `For: ${state.company || '—'}`,
+        `Industry: ${state.industry || '—'}`,
+        `Generated: ${new Date().toISOString()}`,
+        '================================================',
+        '',
+        'L1 · Human Interfaces',
+        '  - Web Chat, Voice Input, Bi-directional Streams',
+        '',
+        'L2 · Data Sources',
+        '  - ' + (Array.from(state.stack).filter(s => STACK_LAYER_MAP.data.includes(s)).join(', ') || 'Enterprise Data'),
+        '',
+        'L3 · AI Agent Orchestration',
+        '  - Intent Recognition, Planning & Reasoning, Execution',
+        state.pain.length >= 30 ? '  - Custom Agent (blueprinted from your pain)' : '',
+        '',
+        'L4 · Framework Services',
+        '  - RAG, Foundation Models, Safety, Governance',
+        state.compliance.size > 0 ? '  - Compliance: ' + Array.from(state.compliance).join(', ') : '',
+        '',
+        'L5 · MCP Integration Layer',
+        Array.from(state.stack)
+          .filter(s => STACK_LAYER_MAP.integration.includes(s))
+          .map(s => `  - ${s} MCP — ${(FN_MAP[s] || []).join(', ')}`).join('\n'),
+        '',
+        '================================================',
+        'This is a prototype export. Full PDF generation',
+        'lands in the backend phase.',
+        '================================================'
+      ].filter(Boolean).join('\n');
+    }
+
+    function buildBriefTextExport() {
+      return [
+        '================================================',
+        'EXECUTIVE BRIEF — DRAFT',
+        `${state.company || 'Your organization'}`,
+        `${state.industry || '—'} · ${state.role || '—'}`,
+        '================================================',
+        '',
+        '01 · THE PAIN',
+        state.pain,
+        '',
+        '02 · AGENT BLUEPRINT',
+        `Role scope: ${state.role || '—'}`,
+        `Data access via MCP: ${Array.from(state.stack).filter(s => STACK_LAYER_MAP.integration.includes(s)).join(', ') || '—'}`,
+        'Permissions: RBAC per vault',
+        '',
+        '03 · PHASING',
+        'Phase 1 (Weeks 1–8): Pilot agent, single site.',
+        'Phase 2 (Weeks 8–20): Horizontal expansion.',
+        'Phase 3 (Weeks 20+): Multi-site rollout.',
+        '',
+        '04 · SOVEREIGNTY POSTURE',
+        'On-premises / air-gapped. Zero telemetry.',
+        'Per-user knowledge vaults with RBAC.',
+        state.compliance.size > 0 ? `Compliance tuned for: ${Array.from(state.compliance).join(', ')}` : '',
+        '',
+        '================================================',
+        'Draft · subject to solution architect review.',
+        'Book 30 min: info@aiintime.com',
+        '================================================'
+      ].filter(Boolean).join('\n');
+    }
+
+    // Initial preview state
+    updatePreview();
+    updateGenerateBtn();
+  </script>
+
+</body>
+</html>
