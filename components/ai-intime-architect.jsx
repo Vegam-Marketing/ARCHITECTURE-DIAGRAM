@@ -914,7 +914,7 @@ function Generating({ onDone }) {
 
       <div className="mt-16 pt-6 border-t border-stone-800 flex items-center gap-2 text-[11px] font-mono-ibm uppercase tracking-wider text-stone-500">
         <Lock className="w-3 h-3 text-[#d97642]" />
-        Retrieval grounded on AI Intime's private corpus · Inputs never leave our environment
+        Retrieval grounded on AI Intime&apos;s private corpus · Inputs never leave our environment
       </div>
     </div>
   );
@@ -1031,7 +1031,7 @@ function RevealScreen({ data }) {
               Work email to unlock.
             </h3>
             <p className="text-sm text-stone-400 mb-6">
-              We'll email you the PDF and a permanent link. No marketing list. No third-party sharing.
+              We&apos;ll email you the PDF and a permanent link. No marketing list. No third-party sharing.
             </p>
             <input
               type="email"
@@ -1275,13 +1275,13 @@ function ExecutiveBriefPreview({ data, selectedAgentNames }) {
           <SectionHead num="01" label="Pain named" />
           <p className="text-stone-400">
             {data.painPath === 'custom' ? (
-              <em className="text-stone-300">"{data.customPain}"</em>
+              <em className="text-stone-300">&ldquo;{data.customPain}&rdquo;</em>
             ) : data.painPath === 'impact' ? (
               <>Your team operates against the <strong className="text-stone-100">{data.selectedImpact}</strong> impact frame —
               a pattern AI Intime has addressed repeatedly across the {industry.toLowerCase()} segment.</>
             ) : (
               <>Your team identifies with <strong className="text-stone-100">{agentsLine}</strong>.
-              These are live agent patterns we've deployed and continue to refine in production.</>
+              These are live agent patterns we&apos;ve deployed and continue to refine in production.</>
             )}
           </p>
         </section>
@@ -1340,7 +1340,7 @@ function ExecutiveBriefPreview({ data, selectedAgentNames }) {
       <div className="mt-8 pt-6 border-t border-stone-800 flex items-center justify-between flex-wrap gap-3 text-[10px] font-mono-ibm uppercase tracking-wider text-stone-500">
         <div className="flex items-center gap-2">
           <Sparkles className="w-3 h-3 text-[#d97642]" />
-          Brief grounded on AI Intime's private corpus · BASF & Henkel reference material via Vegam
+          Brief grounded on AI Intime&apos;s private corpus · BASF & Henkel reference material via Vegam
         </div>
         <div>DRAFT · Subject to solution architect review</div>
       </div>
